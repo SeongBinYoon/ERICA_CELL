@@ -27,4 +27,5 @@ def show_board(board):
         print(s)
 
 
+
 show_board(board)
