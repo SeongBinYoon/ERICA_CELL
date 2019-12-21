@@ -19,7 +19,7 @@ def number_baseball():
         return result 
 
     def is_duplicated_number(three_digit):
-        temp1 = three_deigit // 100
+        temp1 = three_digit // 100
         temp2 = (three_digit - temp1 * 100) // 10
         temp3 = three_digit - temp1 * 100 - temp2 * 10
 
@@ -122,3 +122,5 @@ def number_baseball():
                 return False
         
     return main()
+
+number_baseball()
