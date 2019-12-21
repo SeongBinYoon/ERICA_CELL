@@ -155,6 +155,7 @@ def transpose(board): #가로세로 바꾸기
             if count >= len(row) :
                 count = 0
     return transposed
+
 def shuffle_ribbons(board) : 
     top_half = board[:2]
     random.shuffle(top_half)
@@ -170,3 +171,18 @@ def shuffle_ribbons_2(board) :
     bottom_half = board[3:]
     random.shuffle(bottom_half)
     return top_half + bottom_half
+
+def create_solution_board():
+    board = create_board()
+    board = shuffle_ribbons(board)
+    board = transpose(board)
+    board = shuffle_ribbons_2(board)
+    board = transpose(board)
+    return board
+
+def copy_board(board):
+    board_clone = []
+    for row in board :
+        row_clone = row[:]
+        board_clone.append(row_clone)
+    return board_clone
