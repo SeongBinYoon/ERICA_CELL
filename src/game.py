@@ -262,7 +262,7 @@ def start():
     print("윤성빈 청와대 비상 대책 위원장에 의하면, 현재 안전 지역인 완도에서 이 사태의 해결책을 마련하고 있다는데요, 김현진 기자...")
     go_wando = input("게임을 시작하시겠습니까? 1 : 네 2 : 아니요 ")
     if go_wando == str(1):
-        sudokmini_6()
+        game()
     else:
         print("게임 종료")
 
