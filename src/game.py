@@ -250,7 +250,8 @@ def sudokmini_6():
             holeset.remove((i,j))
             no_of_holes =  no_of_holes - 1
         else:
-            print(n,"가 아닙니다. 다시 해보세요.") #->기회주는 것이 아니라 죽는 거로 바꿔야함
+            print("답이 아닙니다. 게임을 종료합니다.")
+            exit(1) #->기회주는 것이 아니라 죽는 거로 바꿔야함
     print("정답입니다. 치료키트가 제공됩니다.")
 
 # 게임시작
@@ -261,7 +262,7 @@ def start():
     print("윤성빈 청와대 비상 대책 위원장에 의하면, 현재 안전 지역인 완도에서 이 사태의 해결책을 마련하고 있다는데요, 김현진 기자...")
     go_wando = input("게임을 시작하시겠습니까? 1 : 네 2 : 아니요 ")
     if go_wando == str(1):
-        game()
+        sudokmini_6()
     else:
         print("게임 종료")
 
@@ -269,3 +270,5 @@ def dice(): #엔딩 때 필요
     dice = [1,2,3,4,5,6]
     random.shuffle(dice)
     return dice[0]
+
+start()
