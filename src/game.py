@@ -155,3 +155,18 @@ def transpose(board): #가로세로 바꾸기
             if count >= len(row) :
                 count = 0
     return transposed
+def shuffle_ribbons(board) : 
+    top_half = board[:2]
+    random.shuffle(top_half)
+    mid_half = board[2:4]
+    random.shuffle(mid_half)
+    bottom_half = board[4:]
+    random.shuffle(bottom_half)
+    return top_half + mid_half + bottom_half
+
+def shuffle_ribbons_2(board) : 
+    top_half = board[:3]
+    random.shuffle(top_half)
+    bottom_half = board[3:]
+    random.shuffle(bottom_half)
+    return top_half + bottom_half
