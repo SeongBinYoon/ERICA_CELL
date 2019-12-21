@@ -396,9 +396,16 @@ def game():
                 b=False
 
         if b == False:
-            c = number_baseball() # 숫자야구게임과 스도쿠 랜덤 배정
-            if c == False:
-                break
+            if a == 1:
+                c = number_baseball() # 숫자야구게임과 스도쿠 랜덤 배정
+                if c == False:
+                    break
+            
+            else:
+                c = sudokmini_6()
+                if c == False:
+                    break
+
     if i <= 20:
         print("당신은 사망했습니다.")
     else:
