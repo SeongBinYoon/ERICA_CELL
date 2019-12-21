@@ -71,6 +71,7 @@ def number_baseball():
                 result = rnum
                 break
         return result
+
     def get_strikes_or_ball(user_input_number, random_number):
         s = 0
         b = 0
@@ -123,4 +124,34 @@ def number_baseball():
         
     return main()
 
-number_baseball()
+
+#스도쿠게임
+def create_board(): #create_board() 함수 구현
+    seed = [1,2,3,4,5,6]
+    random.shuffle(seed)
+    a = seed[0]
+    b = seed[1]
+    c = seed[2]
+    d = seed[3]
+    e = seed[4]
+    f = seed[5]
+    board = [[a, b, c, d, e, f], \
+             [b, c, d, e, f ,a], \
+             [c, d, e, f, a ,b], \
+             [d, e, f, a ,b ,c], \
+             [e, f, a, b, c, d], \
+             [f, a, b, c, d, e]]
+    return board
+
+def transpose(board): #가로세로 바꾸기
+    transposed = []
+    for _ in range(len(board)):
+        transposed.append([])
+    count = 0
+    for row in board:
+        for column in row:
+            transposed[count].append(column)
+            count = count + 1
+            if count >= len(row) :
+                count = 0
+    return transposed
