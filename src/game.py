@@ -170,3 +170,40 @@ def shuffle_ribbons_2(board) :
     bottom_half = board[3:]
     random.shuffle(bottom_half)
     return top_half + bottom_half
+def get_level(): #레벨선택
+    level = input("난이도 (상중하) 중에서 하나 선택하여 입력하세요: ")
+    while level not in {"상", "중", "하"}:
+         level = input("난이도 (상중하) 중에서 하나 선택하여 입력하세요: ")
+    if level == "상":
+        return 16
+    elif level == "중":
+        return 12
+    elif level == "하":
+        return 8
+
+def make_holes(board,no_of_holes):
+    holeset = []
+    count = 0
+    while count <= no_of_holes :
+        i, j = random.randrange(0,5), random.randrange(0,5)
+        if board[i][j] != 0 :
+            board[i][j] = 0
+            holeset.append((i,j))
+            count += 1
+    return (board, holeset)
+
+def show_board(board): #퍼즐 게임보드 보여주기
+    print()
+    print('S','|','1','2','3','4','5','6')
+    print('-','+','-','-','-','-','-','-')
+    a = 1
+    for row in board:
+        print(a, '|', end=' ')
+        for colunm in row :
+            if colunm == 0 :
+                print('.', end=' ')
+            else :
+                print(colunm, end=' ')
+        a += 1
+        print()
+
