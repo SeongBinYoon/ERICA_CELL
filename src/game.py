@@ -373,7 +373,7 @@ def game():
         print(a)
         print()
 
-        startbook=fix()
+        startbook = fix()
         if playtime<=3:
             user_answer = input(startbook[startcheck]['question'])
             if user_answer == startbook[startcheck]['answer']:
