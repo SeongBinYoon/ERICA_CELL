@@ -250,7 +250,7 @@ def sudokmini_6():
             holeset.remove((i,j))
             no_of_holes =  no_of_holes - 1
         else:
-            print("답이 아닙니다. 치료키트를 얻지 못했으므로 당신은 사망했습니다.\n 게임을 종료합니다.")
+            print("답이 아닙니다. 치료키트를 얻지 못했으므로 당신은 사망했습니다.\n게임을 종료합니다.")
             exit(1)
     print("정답입니다. 치료키트가 제공됩니다.")
 
