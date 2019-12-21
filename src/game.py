@@ -155,6 +155,7 @@ def transpose(board): #가로세로 바꾸기
             if count >= len(row) :
                 count = 0
     return transposed
+
 def shuffle_ribbons(board) : 
     top_half = board[:2]
     random.shuffle(top_half)
@@ -170,6 +171,7 @@ def shuffle_ribbons_2(board) :
     bottom_half = board[3:]
     random.shuffle(bottom_half)
     return top_half + bottom_half
+<<<<<<< HEAD
 def get_level(): #레벨선택
     level = input("난이도 (상중하) 중에서 하나 선택하여 입력하세요: ")
     while level not in {"상", "중", "하"}:
@@ -206,4 +208,3 @@ def show_board(board): #퍼즐 게임보드 보여주기
                 print(colunm, end=' ')
         a += 1
         print()
-
