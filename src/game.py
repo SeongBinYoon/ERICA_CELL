@@ -171,7 +171,22 @@ def shuffle_ribbons_2(board) :
     bottom_half = board[3:]
     random.shuffle(bottom_half)
     return top_half + bottom_half
-<<<<<<< HEAD
+
+def create_solution_board(): 
+    board = create_board()
+    board = shuffle_ribbons(board)
+    board = transpose(board)
+    board = shuffle_ribbons_2(board)
+    board = transpose(board)
+    return board
+
+def copy_board(board): 
+    board_clone = []
+    for row in board :
+        row_clone = row[:]
+        board_clone.append(row_clone)
+    return board_clone
+
 def get_level(): #레벨선택
     level = input("난이도 (상중하) 중에서 하나 선택하여 입력하세요: ")
     while level not in {"상", "중", "하"}:
@@ -208,3 +223,45 @@ def show_board(board): #퍼즐 게임보드 보여주기
                 print(colunm, end=' ')
         a += 1
         print()
+
+def get_integer(message,i,j): #수 입력받기
+    number = input(message)
+    while not (i <= int(number) <= j):
+        number = input(message)
+    return int(number)
+
+def sudokmini_6(): 
+    solution = create_solution_board()
+    no_of_holes = get_level()
+    puzzle = copy_board(solution)
+    (puzzle,holeset) = make_holes(puzzle,no_of_holes)
+    show_board(puzzle)
+    while no_of_holes > 0:
+        i = get_integer("가로줄번호(1~6): ",1,6) - 1
+        j = get_integer("세로줄번호(1~6): ",1,6) - 1
+        if (i,j) not in holeset:
+            print("빈칸이 아닙니다.")
+            continue
+        sol = solution[i][j]
+        n = get_integer("숫자(1~6): ",1,6)
+        if n == sol:
+            puzzle[i][j] = sol
+            show_board(puzzle)
+            holeset.remove((i,j))
+            no_of_holes =  no_of_holes - 1
+        else:
+            print(n,"가 아닙니다. 다시 해보세요.") #->기회주는 것이 아니라 죽는 거로 바꿔야함
+    print("정답입니다. 치료키트가 제공됩니다.")
+
+print (sudokmini_6())
+
+def start():
+    print("뉴스속보입니다. 현재 대한민국 전역에 일명 ‘좀비’ 바이러스라고 불리는 이상증세가 시민들 가운데서 급속도로 확산되고 있습니다.")
+    print("긴급대피령이 내려진 상황에서 경찰과 군대는 진압을 시작하고 있지만,이미 감염자가 많이 퍼진 만큼 진압이 쉽지는 않아 보입니다.")
+    print("국민 여러분께서는 집 밖 외출을 자제해 주시고, 기동대가 도착할 때까지 가까운 피난소 및 대피소에 몸을 숨겨주시기 바랍니다.")
+    print("윤성빈 청와대 비상 대책 위원장에 의하면, 현재 안전 지역인 완도에서 이 사태의 해결책을 마련하고 있다는데요, 김현진 기자...")
+    go_wando = input("게임을 시작하시겠습니까? 1 : 네 2 : 아니요 ")
+    if go_wando == str(1):
+        game()
+    else:
+        print("게임 종료")
