@@ -250,8 +250,8 @@ def sudokmini_6():
             holeset.remove((i,j))
             no_of_holes =  no_of_holes - 1
         else:
-            print("답이 아닙니다. 게임을 종료합니다.")
-            exit(1) #->기회주는 것이 아니라 죽는 거로 바꿔야함
+            print("답이 아닙니다. 치료키트를 얻지 못했으므로 당신은 사망했습니다.\n 게임을 종료합니다.")
+            exit(1)
     print("정답입니다. 치료키트가 제공됩니다.")
 
 # 게임시작
@@ -266,8 +266,8 @@ def start():
     else:
         print("게임 종료")
 
-def dice(): #엔딩 때 필요
-    dice = [1,2,3,4,5,6]
+def dice(): 
+    dice = [1,2,3]
     random.shuffle(dice)
     return dice[0]
 
