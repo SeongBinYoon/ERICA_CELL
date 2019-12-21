@@ -356,4 +356,57 @@ def rbook() :
     random.shuffle(randombook)
     return randombook
 
+def game():
+    i = 1
+    playtime = 0 # 주사위 굴린 횟수 저장하는 변수
+    startcheck=0 #startbook 인덱스에 접근하기 위한 변수
+    randomcheck=0 #randombook 인덱스에 접근하기 위한 변수
+    print()
+    print("좀비 게임을 시작한 당신, 20번째 칸보다 많이 가게 되면 완도에 있는 안전지대에 도착하게 됩니다.")
+    randombook=rbook()
+    while i <= 20 :
+        print("당신은 현재 "+str(i)+"번째 칸에 있습니다. 반주사위를 굴리겠습니다.")
+        a = dice()
+        playtime+=1 # 주사위 굴린 횟수 ++
+        i += a
+        print('주사위 값 :',end='')
+        print(a)
+        print()
+
+        startbook=start()
+        if playtime<=3:
+            user_answer = input(startbook[startcheck]['question'])
+            if user_answer == startbook[startcheck]['answer']:
+                print(startbook[startcheck]['answerp'])
+                startcheck+=1
+                b=True
+            else:
+                print(startbook[startcheck]['wrong'])
+                startcheck+=1
+                b=False
+        elif 4<=playtime<=20:
+            user_answer = input(randombook[randomcheck]['question'])
+            if user_answer == randombook[randomcheck]['answer']:
+                print(randombook[randomcheck]['answerp'])
+                randomcheck+=1
+                b=True
+            else:
+                print(randombook[randomcheck]['wrong'])
+                randomcheck+=1
+                b=False
+
+        if b == False:
+            c = number_baseball() # 숫자야구게임과 스도쿠 랜덤 배정
+            if c == False:
+                break
+    if i <= 20:
+        print("당신은 사망했습니다.")
+    else:
+        print("당신은 20번째 칸을 넘어 안전지대에 도착했습니다.")
+        print()
+        print("당신은 완도에 있는 생존자 캠프에 도착했습니다. ")
+        print("축하합니다. 게임을 이겼습니다.")
+
+
 start()
+
