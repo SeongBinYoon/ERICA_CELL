@@ -71,4 +71,54 @@ def number_baseball():
                 result = rnum
                 break
         return result
+    def get_strikes_or_ball(user_input_number, random_number):
+        s = 0
+        b = 0
+        result = None
+        if ((user_input_number == None)):                                       
+            result = result 
+        else:
+            for i in range(0,3):
+                for j in range(0,3):
+                    if i == j:
+                        if user_input_number[i] == random_number[j]:
+                            s += 1
+                    else:
+                        if user_input_number[i] == random_number[j]:
+                            b += 1
+        s = str(s)
+        b = str(b)
+        result = ["strike = " +  s + ", ball = "+ b]
+        result = ("".join(result))
+        return '현 상황: ' + result
 
+    def main():
+        count = 1
+        print("게임 성공시 당신에게 치료키트가 제공됩니다.")
+        print("숫자맞추기 게임을 시작하겠습니다. 8회안에 못 맞출 시 실패입니다.")
+        print()
+        user_input = input("0부터 9까지의 숫자를 한 번씩만 사용하여 만든 세 자리 수를 입력해주세요. : ")
+        random_number = str(get_not_duplicated_three_digit_number())
+        valid_num = is_validated_number(user_input)
+        str_valid_num = str(valid_num)
+        if (valid_num == None):
+            print("-the End-")
+            return False
+        else:
+            print(get_strikes_or_ball(str_valid_num, random_number))
+            while count != 8:                      
+                new_user_input = input()
+                new_valid_num = is_validated_number(new_user_input)
+                new_str_valid_num = str(new_valid_num)
+                get_strikes_or_ball(new_str_valid_num, random_number)
+                result = get_strikes_or_ball(new_str_valid_num, random_number)
+                print(result)
+                count += 1
+                if (new_str_valid_num == random_number):
+                    print("숫자맞추기게임을 성공했습니다. 치료키트가 주어집니다.")
+                    return True
+                    break
+            if count == 8:
+                return False
+        
+    return main()
